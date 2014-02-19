@@ -1,0 +1,5 @@
+bin
+packages
+.nuget
+obj
+*.suo

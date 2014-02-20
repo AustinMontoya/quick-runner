@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NUnitProcessStarter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,16 +57,10 @@
   -->
   <Target Name="AfterBuild">
     <ItemGroup>
-        <NunitRunnerFiles Include="$(SolutionDir)\packages\NUnit.Runners.2.6.3\tools\*.*"/>
-        <NunitRunnerLib Include="$(SolutionDir)\packages\NUnit.Runners.2.6.3\tools\lib\*.*"/>
+      <NunitRunnerFiles Include="$(SolutionDir)\packages\NUnit.Runners.2.6.3\tools\*.*" />
+      <NunitRunnerLib Include="$(SolutionDir)\packages\NUnit.Runners.2.6.3\tools\lib\*.*" />
     </ItemGroup>
-    <Copy
-      SourceFiles="@(NunitRunnerFiles)"
-      DestinationFolder="$(OutputPath)\nunit-runner"
-      />
-    <Copy
-      SourceFiles="@(NunitRunnerLib)"
-      DestinationFolder="$(OutputPath)\nunit-runner\lib"
-      />
+    <Copy SourceFiles="@(NunitRunnerFiles)" DestinationFolder="$(OutputPath)\nunit-runner" />
+    <Copy SourceFiles="@(NunitRunnerLib)" DestinationFolder="$(OutputPath)\nunit-runner\lib" />
   </Target>
 </Project>

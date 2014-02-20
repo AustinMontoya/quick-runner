@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Runner
@@ -30,30 +31,31 @@ namespace Runner
             * 4) aggregate results into single document
             *    write document to disk
             */
-            var p = new Process();
-            p.StartInfo = new ProcessStartInfo
-            {
-                FileName = @"nunit-runner\nunit-console.exe",
-                WorkingDirectory = "nunit-runner",
-                Arguments = string.Join(" ",
-                    "/run:Specs.Capa",
-                    @"C:\grc\core\Specs\bin\Debug\TNW.Core-Specs.dll",
-                    string.Format("/xml:results-{0}.xml", Guid.NewGuid())),
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                RedirectStandardOutput = true
-            };
-
-            p.OutputDataReceived += process_OutputDataReceived;
-            p.Start();
-            p.BeginOutputReadLine();
-            p.WaitForExit();
+            var processStarter = new NUnitProcessStarter();
+            RunSynchronous(processStarter);
+            RunAsynchronous(processStarter);
         }
 
-        static void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        static void RunSynchronous(NUnitProcessStarter processStarter)
         {
-            Console.WriteLine(e.Data);
+            Profile("synchronous", () =>
+            {
+                processStarter.RunSynchronous("Specs.Capa");
+                processStarter.RunSynchronous("Specs.Email");
+            });
         }
 
+        static void RunAsynchronous(NUnitProcessStarter processStarter)
+        {
+            Profile("async", () => Task.WaitAll(processStarter.RunAsync("Specs.Capa"), processStarter.RunAsync("Specs.Email")));
+        }
+
+        static void Profile(string profileType, Action a)
+        {
+            var start = DateTime.Now;
+            a();
+            var stop = DateTime.Now;
+            Console.WriteLine(string.Format("{0} took {1}s", profileType, (stop - start).Seconds));
+        }
     }
 }

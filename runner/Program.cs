@@ -46,10 +46,11 @@ namespace Runner
         static void RunAsynchronous(NUnitProcessStarter processStarter)
         {
             Profile("async", () => Task.WaitAll(
-                processStarter.RunAsync("Slowlenium.Namespace1"),
-                processStarter.RunAsync("Slowlenium.Namespace2"),
-                processStarter.RunAsync("Slowlenium.Namespace3"),
-                processStarter.RunAsync("Slowlenium.Namespace4")));
+                processStarter.RunAsync("Slowlenium.A"),
+                processStarter.RunAsync("Slowlenium.B"),
+                processStarter.RunAsync("Slowlenium.C"),
+                processStarter.RunAsync("Slowlenium.D")
+                ));
         }
 
         static void Profile(string profileType, Action a)
@@ -57,7 +58,7 @@ namespace Runner
             var start = DateTime.Now;
             a();
             var stop = DateTime.Now;
-            Console.WriteLine(string.Format("{0} took {1}s", profileType, (stop - start).Seconds));
+            Console.WriteLine("{0} took {1}s", profileType, (stop - start).TotalSeconds);
         }
     }
 }

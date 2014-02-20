@@ -34,6 +34,7 @@
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -46,35 +47,54 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SlowTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Namespace4\SlowTestX.cs" />
-    <Compile Include="Namespace4\SlowTestW.cs" />
-    <Compile Include="Namespace4\SlowTestV.cs" />
-    <Compile Include="Namespace4\SlowTestU.cs" />
-    <Compile Include="Namespace4\SlowTestT.cs" />
-    <Compile Include="Namespace4\SlowTestS.cs" />
-    <Compile Include="Namespace3\SlowTestR.cs" />
-    <Compile Include="Namespace3\SlowTestQ.cs" />
-    <Compile Include="Namespace3\SlowTestP.cs" />
-    <Compile Include="Namespace3\SlowTestO.cs" />
-    <Compile Include="Namespace3\SlowTestN.cs" />
-    <Compile Include="Namespace3\SlowTestM.cs" />
-    <Compile Include="Namespace2\SlowTestL.cs" />
-    <Compile Include="Namespace2\SlowTestK.cs" />
-    <Compile Include="Namespace2\SlowTestJ.cs" />
-    <Compile Include="Namespace2\SlowTestI.cs" />
-    <Compile Include="Namespace2\SlowTestH.cs" />
-    <Compile Include="Namespace2\SlowTestG.cs" />
-    <Compile Include="Namespace1\SlowTestF.cs" />
-    <Compile Include="Namespace1\SlowTestE.cs" />
-    <Compile Include="Namespace1\SlowTestD.cs" />
-    <Compile Include="Namespace1\SlowTestC.cs" />
-    <Compile Include="Namespace1\SlowTestA.cs" />
-    <Compile Include="Namespace1\SlowTestB.cs" />
+    <Compile Include="D\SlowTestX.cs" />
+    <Compile Include="D\SlowTestW.cs" />
+    <Compile Include="D\SlowTestV.cs" />
+    <Compile Include="D\SlowTestU.cs" />
+    <Compile Include="D\SlowTestT.cs" />
+    <Compile Include="D\SlowTestS.cs" />
+    <Compile Include="C\SlowTestR.cs" />
+    <Compile Include="C\SlowTestQ.cs" />
+    <Compile Include="C\SlowTestP.cs" />
+    <Compile Include="C\SlowTestO.cs" />
+    <Compile Include="C\SlowTestN.cs" />
+    <Compile Include="C\SlowTestM.cs" />
+    <Compile Include="B\SlowTestL.cs" />
+    <Compile Include="B\SlowTestK.cs" />
+    <Compile Include="B\SlowTestJ.cs" />
+    <Compile Include="B\SlowTestI.cs" />
+    <Compile Include="B\SlowTestH.cs" />
+    <Compile Include="B\SlowTestG.cs" />
+    <Compile Include="A\SlowTestF.cs" />
+    <Compile Include="A\SlowTestE.cs" />
+    <Compile Include="A\SlowTestD.cs" />
+    <Compile Include="A\SlowTestC.cs" />
+    <Compile Include="A\SlowTestA.cs" />
+    <Compile Include="A\SlowTestB.cs" />
+    <Compile Include="WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\chromedriver.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\IEDriverServer.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

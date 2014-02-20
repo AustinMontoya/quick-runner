@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "runner\Runner.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowlenium", "Slowlenium\Slowlenium.csproj", "{4C2FFED6-B518-4A49-9A73-99FCE66529ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BEFB72A8-E906-43A8-A059-B199969F9EE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreSpecs", "Core-Specs\CoreSpecs.csproj", "{24F8887B-3E38-497F-A70F-C0F2C7142763}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{4C2FFED6-B518-4A49-9A73-99FCE66529ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C2FFED6-B518-4A49-9A73-99FCE66529ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C2FFED6-B518-4A49-9A73-99FCE66529ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEFB72A8-E906-43A8-A059-B199969F9EE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEFB72A8-E906-43A8-A059-B199969F9EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEFB72A8-E906-43A8-A059-B199969F9EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEFB72A8-E906-43A8-A059-B199969F9EE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F8887B-3E38-497F-A70F-C0F2C7142763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F8887B-3E38-497F-A70F-C0F2C7142763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F8887B-3E38-497F-A70F-C0F2C7142763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F8887B-3E38-497F-A70F-C0F2C7142763}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

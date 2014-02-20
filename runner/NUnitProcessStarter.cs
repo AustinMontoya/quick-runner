@@ -34,14 +34,14 @@ namespace Runner
                     WorkingDirectory = "nunit-runner",
                     Arguments = string.Join(" ",
                         runArg,
-                        @"C:\grc\core\Specs\bin\Debug\TNW.Core-Specs.dll",
+                        @"C:\quick-runner\Slowlenium\bin\Debug\Slowlenium.dll",
                         string.Format("/xml:{0}", resultsFilename)),
                     UseShellExecute = false,
                     CreateNoWindow = true,
                     RedirectStandardOutput = true
                 }
             };
-
+            p.OutputDataReceived += process_OutputDataReceived;
             p.Start();
             p.BeginOutputReadLine();
             p.WaitForExit();

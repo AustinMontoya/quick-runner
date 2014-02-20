@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "runner\Runner.csproj", "{A8328796-6FCE-45C0-AFF4-EE7A1B53BAC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowlenium", "Slowlenium\Slowlenium.csproj", "{4C2FFED6-B518-4A49-9A73-99FCE66529ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A8328796-6FCE-45C0-AFF4-EE7A1B53BAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8328796-6FCE-45C0-AFF4-EE7A1B53BAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8328796-6FCE-45C0-AFF4-EE7A1B53BAC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C2FFED6-B518-4A49-9A73-99FCE66529ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2FFED6-B518-4A49-9A73-99FCE66529ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2FFED6-B518-4A49-9A73-99FCE66529ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2FFED6-B518-4A49-9A73-99FCE66529ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

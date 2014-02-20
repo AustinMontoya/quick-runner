@@ -32,22 +32,24 @@ namespace Runner
             *    write document to disk
             */
             var processStarter = new NUnitProcessStarter();
-            RunSynchronous(processStarter);
+            //RunSynchronous(processStarter);
             RunAsynchronous(processStarter);
+            Console.WriteLine("Press any key to quit.");
+            Console.ReadKey();
         }
 
         static void RunSynchronous(NUnitProcessStarter processStarter)
         {
-            Profile("synchronous", () =>
-            {
-                processStarter.RunSynchronous("Specs.Capa");
-                processStarter.RunSynchronous("Specs.Email");
-            });
+            Profile("synchronous", () => processStarter.RunSynchronous("Slowlenium"));
         }
 
         static void RunAsynchronous(NUnitProcessStarter processStarter)
         {
-            Profile("async", () => Task.WaitAll(processStarter.RunAsync("Specs.Capa"), processStarter.RunAsync("Specs.Email")));
+            Profile("async", () => Task.WaitAll(
+                processStarter.RunAsync("Slowlenium.Namespace1"),
+                processStarter.RunAsync("Slowlenium.Namespace2"),
+                processStarter.RunAsync("Slowlenium.Namespace3"),
+                processStarter.RunAsync("Slowlenium.Namespace4")));
         }
 
         static void Profile(string profileType, Action a)

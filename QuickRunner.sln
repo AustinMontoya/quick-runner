@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "runner\Runner.csproj", "{A8328796-6FCE-45C0-AFF4-EE7A1B53BAC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickRunner.Runner", "runner\QuickRunner.Runner.csproj", "{A8328796-6FCE-45C0-AFF4-EE7A1B53BAC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowlenium", "Slowlenium\Slowlenium.csproj", "{4C2FFED6-B518-4A49-9A73-99FCE66529ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BEFB72A8-E906-43A8-A059-B199969F9EE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickRunner.Core", "Core\QuickRunner.Core.csproj", "{BEFB72A8-E906-43A8-A059-B199969F9EE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreSpecs", "Core-Specs\CoreSpecs.csproj", "{24F8887B-3E38-497F-A70F-C0F2C7142763}"
 EndProject

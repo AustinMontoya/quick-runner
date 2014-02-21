@@ -16,10 +16,8 @@ namespace Slowlenium
             {
                 case "ie":
                     return new InternetExplorerDriver(driversPath);
-                    break;
                 case "chrome":
                     return new ChromeDriver(driversPath);
-                    break;
                 default:
                     throw new Exception("Unsupported driver type: " + driverType);
             }

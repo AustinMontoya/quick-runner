@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using NDesk.Options;
+using Newtonsoft.Json;
+using QuickRunner.Core;
 
-namespace Runner
+namespace QuickRunner.Runner
 {
     class Program
     {
@@ -31,26 +28,29 @@ namespace Runner
             * 4) aggregate results into single document
             *    write document to disk
             */
-            var processStarter = new NUnitProcessStarter();
-            //RunSynchronous(processStarter);
-            RunAsynchronous(processStarter);
+            var runner = new Runner(GetOptions(args));
+            runner.Run();
+
             Console.WriteLine("Press any key to quit.");
             Console.ReadKey();
         }
 
-        static void RunSynchronous(NUnitProcessStarter processStarter)
+        private static RunnerOptions GetOptions(string[] args)
         {
-            Profile("synchronous", () => processStarter.RunSynchronous("Slowlenium"));
-        }
+            var configPath = string.Empty;
+            RunnerOptions options;
 
-        static void RunAsynchronous(NUnitProcessStarter processStarter)
-        {
-            Profile("async", () => Task.WaitAll(
-                processStarter.RunAsync("Slowlenium.A"),
-                processStarter.RunAsync("Slowlenium.B"),
-                processStarter.RunAsync("Slowlenium.C"),
-                processStarter.RunAsync("Slowlenium.D")
-                ));
+            new OptionSet
+            {
+                {"config=", v => configPath = v}
+            }.Parse(args);
+            
+            using (var sr = new StreamReader(configPath))
+            {
+                options = JsonConvert.DeserializeObject<RunnerOptions>(sr.ReadToEnd());
+            }
+
+            return options;
         }
 
         static void Profile(string profileType, Action a)

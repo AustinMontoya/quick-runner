@@ -32,7 +32,7 @@ namespace QuickRunner.Runner
             // Right now environment-level parallelization is only supported,
             // though with the process starter we could do more granular assembly-level parallelization as well
             var tasks = new List<Task>();
-            var resultFilenames = new List<string>();
+            var results = new List<TestRunResult>();
 
             foreach (var run in GetRuns())
             {
@@ -45,14 +45,23 @@ namespace QuickRunner.Runner
 
                 // Get the full type name (including namespace) for each type, join into comma-separated string
                 var testNames = run.Tests.Select(x => string.Format("{0}.{1}", x.ReflectedType, x.Name));
-                tasks.Add(Task.Run(async () => resultFilenames.Add(await starter.RunAsync(testNames))));
+                tasks.Add(Task.Run(
+                    async () => results.Add(
+                        new TestRunResult
+                        {
+                            ResultsFilepath = "nunit-runner\\" + await starter.RunAsync(testNames),
+                            Environment = run.Environment
+                        }
+                    )
+                ));
+
             }
 
             Task.WaitAll(tasks.ToArray());
 
             if (Options.AggregateResults)
             {
-                ResultsAggregator.Execute(Options.ResultsFilepath, resultFilenames.Select(fn => "nunit-runner\\" + fn).ToArray());
+                ResultsAggregator.Execute(Options.ResultsFilepath, results.ToArray());
             }
         }
 

@@ -9,12 +9,13 @@ namespace QuickRunner.Core
     public class NUnitProcessStarter
     {
         public string AssemblyPath { get; set; }
-        public string EnvironemntName { get; set; }
+
+        public string EnvironmentName { get; set; }
 
         public NUnitProcessStarter(string assemblyPath, string environemntName)
         {
             AssemblyPath = assemblyPath;
-            EnvironemntName = environemntName;
+            EnvironmentName = environemntName;
         }
 
         public async Task<string> RunAsync(string nunitRunSpecifier)
@@ -32,7 +33,7 @@ namespace QuickRunner.Core
         {
             return await Task.Run(() =>
             {
-                var resultsFilename = string.Format("results-{0}.xml", EnvironemntName);
+                var resultsFilename = string.Format("results-{0}.xml", EnvironmentName);
                 var runArg = string.Format("/run:{0}", nunitRunSpecifier);
                 const string frameworkArg = "/framework:net-4.5.1";
                 Console.WriteLine("Tests started to run: \n" + string.Join("\n", nunitRunSpecifier.Split(',').Select(s => "- " + s)));

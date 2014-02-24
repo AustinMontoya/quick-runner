@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using NDesk.Options;
@@ -29,6 +30,7 @@ namespace QuickRunner.Runner
             *    write document to disk
             */
             var runner = new Runner(GetOptions(args));
+            StartWatchdog();
             runner.Run();
 
             Console.WriteLine("Press any key to quit.");
@@ -59,6 +61,11 @@ namespace QuickRunner.Runner
             a();
             var stop = DateTime.Now;
             Console.WriteLine("{0} took {1}s", profileType, (stop - start).TotalSeconds);
+        }
+
+        static void StartWatchdog()
+        {
+            Process.Start("QuickRunner.Watchdog.exe", Process.GetCurrentProcess().Id.ToString());
         }
     }
 }

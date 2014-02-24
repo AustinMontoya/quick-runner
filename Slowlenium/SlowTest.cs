@@ -13,10 +13,9 @@ using OpenQA.Selenium.IE;
 
 namespace Slowlenium
 {
-    public class SlowTest
+    public static class SlowTest
     {
-        [Test]
-        public void IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile()
+        public static void DoStuff()
         {
             IWebDriver driver = WebDriverFactory.GetDriver();
             driver.Navigate().GoToUrl("http://www.google.com");

@@ -39,6 +39,8 @@ namespace QuickRunner.Core.Extractors
             AppDomain.CurrentDomain.AssemblyResolve -= ExternalAssemblyResolver;
         }
 
+
+
         private Assembly ExternalAssemblyResolver(object sender, ResolveEventArgs args)
         {
             try

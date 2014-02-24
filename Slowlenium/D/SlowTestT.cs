@@ -3,7 +3,12 @@
 namespace Slowlenium.D
 {
     [TestFixture]
-    class SlowTestT : SlowTest
+    class SlowTestT
     {
+        [Test]
+        public void IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile()
+        {
+            SlowTest.DoStuff();
+        }
     }
 }

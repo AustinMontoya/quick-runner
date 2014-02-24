@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickRunner.Core", "Core\Qu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickRunner.CoreSpecs", "Core-Specs\QuickRunner.CoreSpecs.csproj", "{24F8887B-3E38-497F-A70F-C0F2C7142763}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickRunner.Watchdog", "QuickRunner.Watchdog\QuickRunner.Watchdog.csproj", "{49F39B66-43B8-4998-A612-70061B1B74A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{24F8887B-3E38-497F-A70F-C0F2C7142763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24F8887B-3E38-497F-A70F-C0F2C7142763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24F8887B-3E38-497F-A70F-C0F2C7142763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49F39B66-43B8-4998-A612-70061B1B74A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49F39B66-43B8-4998-A612-70061B1B74A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49F39B66-43B8-4998-A612-70061B1B74A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49F39B66-43B8-4998-A612-70061B1B74A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

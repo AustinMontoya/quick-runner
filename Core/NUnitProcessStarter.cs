@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuickRunner.Core
 {
     public class NUnitProcessStarter
     {
+        private Process _process;
+ 
         public string AssemblyPath { get; set; }
 
         public NUnitProcessStarter(string assemblyPath)
@@ -32,7 +35,7 @@ namespace QuickRunner.Core
                 var resultsFilename = string.Format("results-{0}.xml", Guid.NewGuid());
                 var runArg = string.Format("/run:{0}", nunitRunSpecifier);
                 var frameworkArg = "/framework:net-4.5.1";
-                Console.WriteLine("Task started to run " + nunitRunSpecifier);
+                Console.WriteLine("Task started to run: \n" + string.Join("\n", nunitRunSpecifier.Split(',').Select(s => "-" + s)));
                 var p = new Process
                 {
                     StartInfo = new ProcessStartInfo
@@ -62,6 +65,11 @@ namespace QuickRunner.Core
         static void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             Console.WriteLine(e.Data);
+        }
+
+        public void Kill()
+        {
+            _process.Kill();
         }
     }
 }

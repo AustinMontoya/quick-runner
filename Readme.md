@@ -42,6 +42,12 @@ There are both global and environment-level options that can be specified to tel
 
 Using the Slowlenium project included in this repo is a good way to get started:
 
+```bash
+Runner.exe -config="/path/to/config.json"
+```
+
+In `config.json`:
+
 ```javascript
 {
 	"AssemblyPath": "C:\\dev\\quick-runner\\Slowlenium\\bin\\Debug", // assuming this is where the project is on your local filesystem

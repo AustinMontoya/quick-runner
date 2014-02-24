@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="TestEnvironment.cs" />
     <Compile Include="TestRunExtractors\EvenSplitExtractor.cs" />
+    <Compile Include="TestRunExtractors\NamespaceSplitExtractor.cs" />
     <Compile Include="TestRunExtractors\TestRunExtractor.cs" />
     <Compile Include="TestRunExtractors\TestRunExtractorFactory.cs" />
     <Compile Include="RunnerOptions.cs" />

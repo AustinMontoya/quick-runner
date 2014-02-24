@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace QuickRunner.Core.Extractors
@@ -15,9 +16,9 @@ namespace QuickRunner.Core.Extractors
 
         private readonly string _assemblyFilename;
 
-        protected TestRunExtractor(List<TestEnvironment> environments, string assemblyFilename, string assemblyPath, string configFilepath)
+        protected TestRunExtractor(IEnumerable<TestEnvironment> environments, string assemblyFilename, string assemblyPath, string configFilepath)
         {
-            Environments = environments;
+            Environments = environments.ToList();
             _assemblyFilename = assemblyFilename;
             _assemblyPath = assemblyPath;
             Environments.ForEach(env => env.Initialize(assemblyPath, configFilepath));

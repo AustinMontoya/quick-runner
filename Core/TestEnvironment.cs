@@ -22,13 +22,24 @@ namespace QuickRunner.Core
             // Clear out old environment, we want a fresh folder every time
             if (Directory.Exists(Path))
             {
-                Directory.Delete(Path, true);
+                try
+                {
+                    Directory.Delete(Path, true);
+                }
+                catch
+                {
+                    // TODO: why?
+                }
+                
             }
 
             DirectoryUtils.CopyRecursive(new DirectoryInfo(assemblyPath).FullName, Path);
 
+            if (string.IsNullOrEmpty(configFilepath)) return;
+
             // override app settings
             var envConfigPath = System.IO.Path.Combine(Path, configFilepath);
+
             var doc = XDocument.Load(envConfigPath);
 
             var appSettingsNode = doc.XPathSelectElement("//appSettings");

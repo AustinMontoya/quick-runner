@@ -11,7 +11,7 @@ namespace QuickRunner.Core.Extractors
     /// </summary>
     public class EvenSplitExtractor : TestRunExtractor
     {
-        public EvenSplitExtractor(List<TestEnvironment> environments, string assemblyFilename, string assemblyPath, string configFilepath) 
+        public EvenSplitExtractor(IEnumerable<TestEnvironment> environments, string assemblyFilename, string assemblyPath, string configFilepath) 
             : base(environments, assemblyFilename, assemblyPath, configFilepath)
         {
         }
@@ -35,7 +35,7 @@ namespace QuickRunner.Core.Extractors
             var i = 0;
             return tests
                 .GroupBy(x => i++ % numGroups)
-                .Zip(Environments, (testGroup, environment) => new TestRun(environment, testGroup));
+                .Zip(Environments, (testGroup, environment) => new TestRun(environment, testGroup.ToList()));
         }
     }
 }

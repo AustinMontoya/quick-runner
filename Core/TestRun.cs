@@ -6,7 +6,7 @@ namespace QuickRunner.Core
 {
     public class TestRun
     {
-        public TestRun(TestEnvironment environment, IEnumerable<MethodInfo> tests)
+        public TestRun(TestEnvironment environment, List<MethodInfo> tests)
         {
             Environment = environment;
             Tests = tests;
@@ -14,6 +14,6 @@ namespace QuickRunner.Core
 
         public TestEnvironment Environment { get; set; }
 
-        public IEnumerable<MethodInfo> Tests { get; private set; }
+        public List<MethodInfo> Tests { get; private set; }
     }
 }

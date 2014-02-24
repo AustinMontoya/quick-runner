@@ -4,3 +4,7 @@ packages
 obj
 *.suo
 *.csproj.user
+*.user
+
+# in Core-Specs\lib
+test-assembly

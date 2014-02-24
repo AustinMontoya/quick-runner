@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slowlenium", "Slowlenium\Sl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickRunner.Core", "Core\QuickRunner.Core.csproj", "{BEFB72A8-E906-43A8-A059-B199969F9EE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreSpecs", "Core-Specs\CoreSpecs.csproj", "{24F8887B-3E38-497F-A70F-C0F2C7142763}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickRunner.CoreSpecs", "Core-Specs\QuickRunner.CoreSpecs.csproj", "{24F8887B-3E38-497F-A70F-C0F2C7142763}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

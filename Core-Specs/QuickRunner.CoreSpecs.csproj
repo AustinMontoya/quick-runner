@@ -42,11 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestRunExtractors\EvenSplitExtractorSpec.cs" />
+    <Compile Include="TestRunExtractors\NamespaceSplitExtractorSpec.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\QuickRunner.Core.csproj">
+      <Project>{BEFB72A8-E906-43A8-A059-B199969F9EE3}</Project>
+      <Name>QuickRunner.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Slowlenium\Slowlenium.csproj">
+      <Project>{4c2ffed6-b518-4a49-9a73-99fce66529ed}</Project>
+      <Name>Slowlenium</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

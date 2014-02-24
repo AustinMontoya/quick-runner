@@ -13,7 +13,6 @@ using OpenQA.Selenium.IE;
 
 namespace Slowlenium
 {
-    [TestFixture]
     public class SlowTest
     {
         [Test]

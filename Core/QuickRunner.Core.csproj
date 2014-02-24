@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Results\ResultsAggregator.cs" />
+    <Compile Include="Results\TestResult.cs" />
     <Compile Include="TestEnvironment.cs" />
     <Compile Include="TestRunExtractors\EvenSplitExtractor.cs" />
     <Compile Include="TestRunExtractors\NamespaceSplitExtractor.cs" />

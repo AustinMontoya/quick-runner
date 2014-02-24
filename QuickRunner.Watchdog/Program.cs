@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace QuickRunner.Watchdog
 {
@@ -30,11 +26,13 @@ namespace QuickRunner.Watchdog
                 Thread.Sleep(1000);
             }
 
-            KillAllTheThings();
+            Bark();
         }
 
-        private static void KillAllTheThings()
+        private static void Bark()
         {
+            Console.WriteLine("Woof!");
+
             // Naive implementation: kill nunit-console and nunit-agent
             // TODO: Figure out how to detect individual console and agent instances and kill them per ProcessStarter
             var processes = Process.GetProcesses()

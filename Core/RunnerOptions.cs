@@ -14,6 +14,12 @@ namespace QuickRunner.Core
         /// </summary>
         public string ConfigFilepath { get; set; }
 
+        public string SplitTestsBy { get; set; }
+
+        public bool AggregateResults { get; set; }
+
+        public string ResultsFilepath { get; set; }
+
         public List<TestEnvironment> Environments { get; set; }
     }
 }

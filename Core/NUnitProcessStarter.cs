@@ -8,13 +8,13 @@ namespace QuickRunner.Core
 {
     public class NUnitProcessStarter
     {
-        private Process _process;
- 
         public string AssemblyPath { get; set; }
+        public string EnvironemntName { get; set; }
 
-        public NUnitProcessStarter(string assemblyPath)
+        public NUnitProcessStarter(string assemblyPath, string environemntName)
         {
             AssemblyPath = assemblyPath;
+            EnvironemntName = environemntName;
         }
 
         public async Task<string> RunAsync(string nunitRunSpecifier)
@@ -32,10 +32,10 @@ namespace QuickRunner.Core
         {
             return await Task.Run(() =>
             {
-                var resultsFilename = string.Format("results-{0}.xml", Guid.NewGuid());
+                var resultsFilename = string.Format("results-{0}.xml", EnvironemntName);
                 var runArg = string.Format("/run:{0}", nunitRunSpecifier);
-                var frameworkArg = "/framework:net-4.5.1";
-                Console.WriteLine("Task started to run: \n" + string.Join("\n", nunitRunSpecifier.Split(',').Select(s => "-" + s)));
+                const string frameworkArg = "/framework:net-4.5.1";
+                Console.WriteLine("Tests started to run: \n" + string.Join("\n", nunitRunSpecifier.Split(',').Select(s => "- " + s)));
                 var p = new Process
                 {
                     StartInfo = new ProcessStartInfo
@@ -65,11 +65,6 @@ namespace QuickRunner.Core
         static void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             Console.WriteLine(e.Data);
-        }
-
-        public void Kill()
-        {
-            _process.Kill();
         }
     }
 }

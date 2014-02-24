@@ -6,8 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using NDesk.Options;
 using QuickRunner.Core;
 using QuickRunner.Core.Extractors;
+using QuickRunner.Core.Results;
 using QuickRunner.Core.Utils;
 
 namespace QuickRunner.Runner
@@ -35,7 +37,10 @@ namespace QuickRunner.Runner
             foreach (var run in GetRuns())
             {
                 // Start the process               
-                var starter = new NUnitProcessStarter(Path.Combine(Path.GetFullPath(run.Environment.Path), Options.AssemblyFileName));
+                var starter = new NUnitProcessStarter(
+                    Path.Combine(Path.GetFullPath(run.Environment.Path), 
+                    Options.AssemblyFileName), 
+                    run.Environment.Name);
                 _processes.Add(starter);
 
                 // Get the full type name (including namespace) for each type, join into comma-separated string
@@ -45,7 +50,10 @@ namespace QuickRunner.Runner
 
             Task.WaitAll(tasks.ToArray());
 
-            // TODO: aggregate results?
+            if (Options.AggregateResults)
+            {
+                ResultsAggregator.Execute(Options.ResultsFilepath, resultFilenames.Select(fn => "nunit-runner\\" + fn).ToArray());
+            }
         }
 
         private IEnumerable<TestRun> GetRuns()

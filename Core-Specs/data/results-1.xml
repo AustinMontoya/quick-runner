@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\dev\quick-runner\runner\bin\Debug\environment-catfish\Slowlenium.dll" total="12" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-02-24" time="09:55:21">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\dev\quick-runner\runner\bin\Debug\nunit-runner" machine-name="WIN-VQVTMUF3870" user="amontoya" user-domain="THENETWORKINC" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\dev\quick-runner\runner\bin\Debug\environment-catfish\Slowlenium.dll" executed="True" result="Success" success="True" time="109.251" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="Slowlenium" executed="True" result="Success" success="True" time="109.245" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="A" executed="True" result="Success" success="True" time="28.111" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="SlowTestB" executed="True" result="Success" success="True" time="10.061" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.A.SlowTestB.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="10.056" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SlowTestC" executed="True" result="Success" success="True" time="9.053" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.A.SlowTestC.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="9.052" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SlowTestE" executed="True" result="Success" success="True" time="8.991" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.A.SlowTestE.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="8.968" asserts="0" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="Namespace" name="B" executed="True" result="Success" success="True" time="27.335" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="SlowTestG" executed="True" result="Success" success="True" time="9.057" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.B.SlowTestG.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="9.033" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SlowTestI" executed="True" result="Success" success="True" time="9.316" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.B.SlowTestI.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="9.315" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SlowTestK" executed="True" result="Success" success="True" time="8.960" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.B.SlowTestK.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="8.959" asserts="0" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="Namespace" name="C" executed="True" result="Success" success="True" time="26.932" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="SlowTestM" executed="True" result="Success" success="True" time="8.978" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.C.SlowTestM.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="8.977" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SlowTestO" executed="True" result="Success" success="True" time="8.959" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.C.SlowTestO.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="8.958" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SlowTestQ" executed="True" result="Success" success="True" time="8.991" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.C.SlowTestQ.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="8.990" asserts="0" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="Namespace" name="D" executed="True" result="Success" success="True" time="26.861" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="SlowTestS" executed="True" result="Success" success="True" time="8.987" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.D.SlowTestS.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="8.986" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SlowTestU" executed="True" result="Success" success="True" time="8.848" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.D.SlowTestU.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="8.847" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SlowTestW" executed="True" result="Success" success="True" time="9.023" asserts="0">
+                <results>
+                  <test-case name="Slowlenium.D.SlowTestW.IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile" executed="True" result="Success" success="True" time="9.021" asserts="0" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

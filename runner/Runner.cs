@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using NDesk.Options;
 using QuickRunner.Core;
-using QuickRunner.Core.Extractors;
 using QuickRunner.Core.Results;
-using QuickRunner.Core.Utils;
+using QuickRunner.Core.TestRunExtractors;
 
 namespace QuickRunner.Runner
 {
@@ -54,7 +48,6 @@ namespace QuickRunner.Runner
                         }
                     )
                 ));
-
             }
 
             Task.WaitAll(tasks.ToArray());

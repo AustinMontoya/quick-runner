@@ -13,6 +13,8 @@ namespace QuickRunner.Core
 
         public Dictionary<string, string> AppSettings { get; set; }
 
+        public List<string> Namespaces { get; set; } 
+
         public string Path { get; private set; }
 
         public void Initialize(string assemblyPath, string configFilepath)

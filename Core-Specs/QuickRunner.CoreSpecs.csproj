@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RunnerDefaults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ResultsAggregatorSpec.cs" />
     <Compile Include="TestRunExtractors\EvenSplitExtractorSpec.cs" />
-    <Compile Include="TestRunExtractors\NamespaceSplitExtractorSpec.cs" />
+    <Compile Include="TestRunExtractors\GlobalNamespaceExtractorSpec.cs" />
+    <Compile Include="TestRunExtractors\EnvironmentNamespacesExtractorSpec.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

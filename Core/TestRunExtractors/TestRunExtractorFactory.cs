@@ -1,25 +1,22 @@
-﻿using QuickRunner.Core.TestRunExtractors;
+﻿using System.Linq;
 
-namespace QuickRunner.Core.Extractors
+namespace QuickRunner.Core.TestRunExtractors
 {
     public static class TestRunExtractorFactory
     {
         public static TestRunExtractor Create(RunnerOptions options)
         {
-            if (options.SplitTestsBy.ToLower() == "namespace")
+            if (options.Environments.Any(env => env.Namespaces != null))
             {
-                return new NamespaceSplitExtractor(
-                    options.Environments,
-                    options.AssemblyFileName,
-                    options.AssemblyPath,
-                    options.ConfigFilepath);
+                return new EnvironmentNamespacesExtractor(options);
             }
 
-            return new EvenSplitExtractor(
-                options.Environments, 
-                options.AssemblyFileName, 
-                options.AssemblyPath, 
-                options.ConfigFilepath);
+            if (options.Namespaces.Count > 0)
+            {
+                return new GlobalNamespaceExtractor(options);
+            }
+
+            return new EvenSplitExtractor(options);
         }
     }
 }

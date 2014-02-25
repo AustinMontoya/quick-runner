@@ -18,7 +18,7 @@ namespace QuickRunner.Core.Utils
             foreach (var file in Directory.GetFiles(sourcePath))
             {
                 var dest = Path.Combine(destPath, Path.GetFileName(file));
-                File.Copy(file, dest);
+                File.Copy(file, dest, true);
             }
 
             foreach (var folder in Directory.GetDirectories(sourcePath))

@@ -20,6 +20,8 @@ namespace QuickRunner.Core
 
         public string ResultsFilepath { get; set; }
 
+        public List<string> Namespaces { get; set; } 
+
         public List<TestEnvironment> Environments { get; set; }
     }
 }

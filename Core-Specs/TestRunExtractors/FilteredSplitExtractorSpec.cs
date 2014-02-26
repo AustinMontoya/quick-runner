@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework;
 using QuickRunner.Core;
 using QuickRunner.Core.TestRunExtractors;
@@ -35,7 +36,21 @@ namespace Core_Specs.TestRunExtractors
         public void ShouldOnlyCreateRunsContainingSpecifiedCategories()
         {
             Options.Categories = Categories;
-            AssertCategories(new FilteredSplitExtractor(Options).Execute());
+            AssertMethodCategories(new FilteredSplitExtractor(Options).Execute());
+        }
+
+        [Test]
+        public void ShouldIncludeTestsThatHaveACategoryOnTheFixture()
+        {
+            Options.Categories = new List<string> { "meow" };
+            var runs = new FilteredSplitExtractor(Options).Execute();
+            Assert.AreEqual(1, runs.SelectMany(r => r.Tests).Count());
+
+            var classCategories =
+                runs.SelectMany(r => r.Tests.Select(t => t.ReflectedType).Distinct())
+                    .SelectMany(t => t.GetCustomAttributes<CategoryAttribute>().Select(attr => attr.Name));
+
+            Assert.IsTrue(classCategories.All(c => Options.Categories.Contains(c)));
         }
 
         [Test]
@@ -46,16 +61,16 @@ namespace Core_Specs.TestRunExtractors
             var runs = new FilteredSplitExtractor(Options).Execute();
 
             AssertNamespaces(runs);
-            AssertCategories(runs);
+            AssertMethodCategories(runs);
         }
 
-        private void AssertCategories(IEnumerable<TestRun> runs)
+        private void AssertMethodCategories(IEnumerable<TestRun> runs)
         {
-            var categories =
+            var methodCategories =
                 runs.SelectMany(r => r.Tests)
                     .SelectMany(t => t.GetCustomAttributes<CategoryAttribute>().Select(attr => attr.Name));
 
-            Assert.IsTrue(categories.All(c => Categories.Contains(c)));
+            Assert.IsTrue(methodCategories.All(c => Categories.Contains(c)));
         }
 
         private void AssertNamespaces(IEnumerable<TestRun> runs)

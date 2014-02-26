@@ -3,6 +3,7 @@
 namespace Slowlenium.D
 {
     [TestFixture]
+    [Category("meow")]
     class SlowTestV
     {
         [Test]

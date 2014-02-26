@@ -13,7 +13,7 @@ namespace QuickRunner.Core.TestRunExtractors
 
         protected RunnerOptions Options { get; private set; }
 
-        protected List<TestEnvironment> Environments { get; private set; } 
+        protected List<ITestEnvironment> Environments { get; private set; } 
 
         protected TestRunExtractor(RunnerOptions options)
         {

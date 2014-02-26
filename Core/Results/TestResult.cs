@@ -4,6 +4,6 @@
     {
         public string ResultsFilepath { get; set; }
 
-        public TestEnvironment Environment { get; set; }
+        public ITestEnvironment Environment { get; set; }
     }
 }

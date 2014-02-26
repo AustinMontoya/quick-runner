@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -53,7 +56,8 @@
     <Compile Include="TestRunExtractors\TestRunExtractorFactory.cs" />
     <Compile Include="RunnerOptions.cs" />
     <Compile Include="TestRun.cs" />
-    <Compile Include="Utils\DirectoryCopy.cs" />
+    <Compile Include="Utils\ConcreteTypeConverter.cs" />
+    <Compile Include="Utils\DirectoryUtils.cs" />
     <Compile Include="NUnitProcessStarter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

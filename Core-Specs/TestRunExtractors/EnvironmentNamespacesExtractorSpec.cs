@@ -12,12 +12,12 @@ namespace Core_Specs.TestRunExtractors
         private IEnumerable<TestRun> _runs; 
 
         [SetUp]
-        public void BeforeEach()
+        public void Before()
         {   
-            Options.Environments = new List<TestEnvironment>
+            Options.Environments = new List<ITestEnvironment>
             {
-                new TestEnvironment {Name = "foo", Namespaces = new List<string> { "Slowlenium.A" }},
-                new TestEnvironment {Name = "bar"},
+                RunnerDefaults.CreateMockEnvironment("foo", new List<string> { "Slowlenium.A" }),
+                RunnerDefaults.CreateMockEnvironment("bar"),
             };
 
             _runs = new EnvironmentNamespacesExtractor(Options).Execute();

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\dev\quick-runner\runner\bin\Debug\environment-carp\Slowlenium.dll" total="12" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-02-24" time="09:55:21">
+<test-results name="C:\dev\quick-runner\runner\bin\Debug\environment-carp\Slowlenium.dll" total="12" errors="1" failures="1" not-run="1" inconclusive="1" ignored="1" skipped="1" invalid="1" date="2014-02-24" time="09:55:21">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\dev\quick-runner\runner\bin\Debug\nunit-runner" machine-name="WIN-VQVTMUF3870" user="amontoya" user-domain="THENETWORKINC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
   <test-suite type="Assembly" name="C:\dev\quick-runner\runner\bin\Debug\environment-carp\Slowlenium.dll" executed="True" result="Success" success="True" time="109.120" asserts="0">

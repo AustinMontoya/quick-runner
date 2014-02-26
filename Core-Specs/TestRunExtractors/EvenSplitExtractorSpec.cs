@@ -8,29 +8,14 @@ using QuickRunner.Core.TestRunExtractors;
 namespace Core_Specs.TestRunExtractors
 {
     [TestFixture]
-    public class EvenSplitExtractorSpec
+    public class EvenSplitExtractorSpec : TestRunExtractorSpecBase
     {
         [Test]
         public void ShouldDivideTestsEvenly()
         {
-             var environments = new List<TestEnvironment>
-            {
-                new TestEnvironment {Name = "foo"},
-                new TestEnvironment {Name = "bar"},
-                new TestEnvironment {Name = "baz"},
-                new TestEnvironment {Name = "foz"}
-            };
-
-            var options = new RunnerOptions
-            {
-                AssemblyPath = "../../lib/test-assembly/",
-                AssemblyFileName = "Slowlenium.dll",
-                Environments = environments
-            };
-
-            var runs = new EvenSplitExtractor(options).Execute();
-            Console.Write(string.Join("\n ", runs.Select(x => "Num tests for run: " + x.Tests.Count)));
-            Assert.IsTrue(runs.All(x => x.Tests.Count == 6));
+            var runs = new EvenSplitExtractor(Options).Execute();
+            var firstLength = runs.First().Tests.Count;
+            Assert.IsTrue(runs.All(r => r.Tests.Count == firstLength));
         }
     }
 }

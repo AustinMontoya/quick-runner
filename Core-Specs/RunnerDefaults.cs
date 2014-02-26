@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
+﻿using System.Collections.Generic;
+using Moq;
 using QuickRunner.Core;
 
 namespace Core_Specs
@@ -11,22 +10,32 @@ namespace Core_Specs
 
         public const string AssemblyFileName = "Slowlenium.dll";
 
-        public static List<TestEnvironment> Environments = new List<TestEnvironment>
+        public static List<ITestEnvironment> Environments = new List<ITestEnvironment>
         {
-            new TestEnvironment { Name = "foo" },
-            new TestEnvironment { Name = "bar" },
-            new TestEnvironment { Name = "baz" },
-            new TestEnvironment { Name = "foz" }
+            CreateMockEnvironment("foo"),
+            CreateMockEnvironment("bar"),
+            CreateMockEnvironment("baz"),
+            CreateMockEnvironment("foz")
         };
 
         public static RunnerOptions GetOptions()
         {
+            
             return new RunnerOptions
             {
                 AssemblyPath = AssemblyPath,
                 AssemblyFileName = AssemblyFileName,
                 Environments = Environments
             };
+        }
+
+        // TODO: Change this and move most things to DI
+        public static ITestEnvironment CreateMockEnvironment(string name, List<string> namespaces = null)
+        {
+            var mock = Mock.Of<ITestEnvironment>();
+            mock.Name = name;
+            mock.Namespaces = namespaces;
+            return mock;
         }
     }
 }

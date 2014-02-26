@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
@@ -12,9 +15,9 @@ namespace QuickRunner.Core.Results
         {
             public XElement NamespaceElement { get; set; }
 
-            public TestEnvironment Environment { get; set; }
+            public ITestEnvironment Environment { get; set; }
 
-            public ElementEnvironment(XElement nsElement, TestEnvironment env)
+            public ElementEnvironment(XElement nsElement, ITestEnvironment env)
             {
                 NamespaceElement = nsElement;
                 Environment = env;
@@ -40,20 +43,34 @@ namespace QuickRunner.Core.Results
 
             var targetDoc = XDocument.Load(results.First().ResultsFilepath);
             var targetElementEnvironment = new ElementEnvironment(GetTestSuite(targetDoc), results.First().Environment);
+            var totals = GetTotals(targetDoc);
             AddEnvironmentAttributeToCases(targetElementEnvironment.NamespaceElement, targetElementEnvironment.Environment.Name);
             foreach (var result in results.Skip(1))
             {
-                var sourceElementEnvironment = new ElementEnvironment(GetTestSuite(XDocument.Load(result.ResultsFilepath)), result.Environment);
+                var sourceDoc = XDocument.Load(result.ResultsFilepath);
+                AccumulateTotals(totals, GetTotals(sourceDoc));
+                var sourceElementEnvironment = new ElementEnvironment(GetTestSuite(sourceDoc), result.Environment);
                 AddEnvironmentAttributeToCases(sourceElementEnvironment.NamespaceElement, sourceElementEnvironment.Environment.Name);
                 MergeNamespaces(targetElementEnvironment, sourceElementEnvironment);
             }
 
+            WriteTotals(targetDoc, totals);
             targetDoc.Save(destPath);
+        }
+
+        private static void WriteTotals(XDocument document, Dictionary<string, int> totals)
+        {
+            foreach (var total in totals)
+            {
+                document.Root.Attribute(total.Key).SetValue(total.Value);
+            }
         }
 
         private static XElement GetTestSuite(XDocument document)
         {
-            return document.Root.XPathSelectElement("test-suite");
+            var assemblyElement =  document.Root.XPathSelectElement("test-suite");
+            var setupFixtureElement = assemblyElement.XPathSelectElement("results/test-suite[@type=\"SetUpFixture\"]");
+            return setupFixtureElement ?? assemblyElement;
         }
 
         private static void MergeNamespaces(ElementEnvironment target, ElementEnvironment source)
@@ -106,6 +123,28 @@ namespace QuickRunner.Core.Results
                         .XPathSelectElement("results")
                         .Add(fixtureElement.XPathSelectElements("results/test-case"));
                 }
+            }
+        }
+
+        private static Dictionary<string, int> GetTotals(XDocument document)
+        {
+            var keys = new[] {"skipped", "ignored", "invalid", "errors", "inconclusive", "total", "not-run", "failures"};
+            var totals = new Dictionary<string, int>();
+
+            foreach (var key in keys)
+            {
+                totals[key] = int.Parse(document.Root.Attribute(key).Value);
+            }
+
+            return totals;
+        }
+
+        private static void AccumulateTotals(Dictionary<string, int> accum, Dictionary<string, int> newData)
+        {
+            var keys = new List<string>(accum.Keys);
+            for (var i = 0; i < accum.Count; i++)
+            {
+                accum[keys[i]] += newData[keys[i]];
             }
         }
 

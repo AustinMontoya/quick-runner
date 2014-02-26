@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+using QuickRunner.Core.Utils;
 
 namespace QuickRunner.Core
 {
@@ -24,6 +26,7 @@ namespace QuickRunner.Core
 
         public List<string> Categories { get; set; } 
 
-        public List<TestEnvironment> Environments { get; set; }
+        [JsonConverter(typeof(EnvironmentsConverter))]
+        public List<ITestEnvironment> Environments { get; set; }
     }
 }

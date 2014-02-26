@@ -6,13 +6,13 @@ namespace QuickRunner.Core
 {
     public class TestRun
     {
-        public TestRun(TestEnvironment environment, List<MethodInfo> tests)
+        public TestRun(ITestEnvironment environment, List<MethodInfo> tests)
         {
             Environment = environment;
             Tests = tests;
         }
 
-        public TestEnvironment Environment { get; set; }
+        public ITestEnvironment Environment { get; set; }
 
         public List<MethodInfo> Tests { get; private set; }
     }

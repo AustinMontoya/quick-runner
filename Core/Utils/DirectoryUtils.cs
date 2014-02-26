@@ -27,5 +27,26 @@ namespace QuickRunner.Core.Utils
                 CopyRecursive(folder, dest);
             }
         }
+
+        public static void Delete(string targetDir)
+        {
+            File.SetAttributes(targetDir, FileAttributes.Normal);
+
+            var files = Directory.GetFiles(targetDir);
+            var dirs = Directory.GetDirectories(targetDir);
+
+            foreach (var file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (var dir in dirs)
+            {
+                Delete(dir);
+            }
+
+            Directory.Delete(targetDir, false);
+        }
     }
 }

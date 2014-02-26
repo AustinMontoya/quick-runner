@@ -13,28 +13,5 @@ namespace Core_Specs.TestRunExtractors
         {
             Options = RunnerDefaults.GetOptions();
         }
-
-        [TearDown]
-        public void AfterEach()
-        {
-            foreach (var testEnvironment in Options.Environments)
-            {
-                var tries = 5;
-                while (tries-- > 0)
-                {
-                    try
-                    {
-                        Directory.Delete(testEnvironment.Path, true);
-                        break;
-                    }
-                    catch
-                    {
-                        tries--;
-                    }
-                }
-            }
-            
-            
-        }
     }
 }

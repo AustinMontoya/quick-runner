@@ -7,7 +7,20 @@ using QuickRunner.Core.Utils;
 
 namespace QuickRunner.Core
 {
-    public class TestEnvironment
+    public interface ITestEnvironment
+    {
+        string Name { get; set; }
+
+        Dictionary<string, string> AppSettings { get; set; }
+
+        List<string> Namespaces { get; set; }
+
+        string Path { get; set; }
+
+        void Initialize(string assemblyPath, string configFilepath);
+    }
+
+    public class TestEnvironment : ITestEnvironment
     {
         public string Name { get; set; }
 
@@ -15,7 +28,7 @@ namespace QuickRunner.Core
 
         public List<string> Namespaces { get; set; } 
 
-        public string Path { get; private set; }
+        public string Path { get; set; }
 
         public void Initialize(string assemblyPath, string configFilepath)
         {
@@ -24,15 +37,7 @@ namespace QuickRunner.Core
             // Clear out old environment, we want a fresh folder every time
             if (Directory.Exists(Path))
             {
-                try
-                {
-                    Directory.Delete(Path, true);
-                }
-                catch
-                {
-                    // TODO: why?
-                }
-                
+                DirectoryUtils.Delete(Path);
             }
 
             DirectoryUtils.CopyRecursive(new DirectoryInfo(assemblyPath).FullName, Path);

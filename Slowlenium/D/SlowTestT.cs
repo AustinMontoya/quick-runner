@@ -6,6 +6,7 @@ namespace Slowlenium.D
     class SlowTestT
     {
         [Test]
+        [Category("bar")]
         public void IShouldOpenABrowserAndDoSomeStuffThatTakesAWhile()
         {
             SlowTest.DoStuff();

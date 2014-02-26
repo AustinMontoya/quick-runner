@@ -48,6 +48,7 @@
     <Compile Include="TestRunExtractors\EvenSplitExtractorSpec.cs" />
     <Compile Include="TestRunExtractors\GlobalNamespaceExtractorSpec.cs" />
     <Compile Include="TestRunExtractors\EnvironmentNamespacesExtractorSpec.cs" />
+    <Compile Include="TestRunExtractors\CategoryExtractorSpec.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

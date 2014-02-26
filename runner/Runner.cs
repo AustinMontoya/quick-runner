@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +28,12 @@ namespace QuickRunner.Runner
             // though with the process starter we could do more granular assembly-level parallelization as well
             var tasks = new List<Task>();
             var results = new List<TestRunResult>();
+            var runs = GetRuns();
+
+            if (runs.Count() < 1)
+            {
+                Console.WriteLine("No tests were found using the provided options!");
+            }
 
             foreach (var run in GetRuns())
             {

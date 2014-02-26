@@ -80,7 +80,7 @@ namespace QuickRunner.Core.TestRunExtractors
                 .SelectMany(t => t.GetMethods().Where(IsTest));
         }
 
-        private static bool HasCustomAttribute(ICustomAttributeProvider type, Type attributeType)
+        protected static bool HasCustomAttribute(ICustomAttributeProvider type, Type attributeType)
         {
             return type.GetCustomAttributes(attributeType, true).Length > 0;
         }

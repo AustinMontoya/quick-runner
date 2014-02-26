@@ -28,7 +28,6 @@ There are both global and environment-level options that can be specified to tel
 
 - `AssemblyPath` (**required**): The path to the *folder* (not the file itself) containing the assembly
 - `AssemblyFileName` (**required**): The name of the assembly to test against
-- `SplitTestsBy` (optional, defaults to "method"): Tells QuickRunner how to divide all of the tests. The two available options are `namespace` and `method`. `namespace` keeps all tests contained in a namespace together to run in one environment. `method` splits the individual tests evenly across all environments.
 - `AggregateResults` (optional, defaults to `false`): Indicates whether to create a single output file for results across all environments. The advantage of using this over a CI plugin is that an extra attribute is added to each <test-case> element, "qr-environment", which specifies which environment the particular case ran in.
 - `ResultsFilepath` (optional, defaults to "$currentDirectory\TestResults.xml"): Specifies an alternate location and filename to save aggregated results to. Is ignored if `AggregateResults` is set to false or omitted.
 - `ConfigFilepath` (optional): Specifies a path, relative to the AssemblyPath, where a file containing <app-settings> is stored.
@@ -52,7 +51,6 @@ In `config.json`:
 {
 	"AssemblyPath": "C:\\dev\\quick-runner\\Slowlenium\\bin\\Debug", // assuming this is where the project is on your local filesystem
 	"AssemblyFileName": "Slowlenium.dll",
-	"SplitTestsBy": "namespace",
 	"AggregateResults": true,
 	"ResultsFilepath": "C:\\temp\\test-results.xml",
 	"Environments": [

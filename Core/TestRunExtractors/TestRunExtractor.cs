@@ -11,17 +11,14 @@ namespace QuickRunner.Core.TestRunExtractors
     {
         protected Assembly Assembly { get; private set; }
 
-        protected List<TestEnvironment> Environments { get; private set; }
+        protected RunnerOptions Options { get; private set; }
 
-        private readonly string _assemblyPath;
-
-        private readonly string _assemblyFilename;
+        protected List<TestEnvironment> Environments { get; private set; } 
 
         protected TestRunExtractor(RunnerOptions options)
         {
+            Options = options;
             Environments = options.Environments;
-            _assemblyFilename = options.AssemblyFileName;
-            _assemblyPath = options.AssemblyPath;
             Environments.ForEach(env => env.Initialize(options.AssemblyPath, options.ConfigFilepath));
         }
 
@@ -47,7 +44,7 @@ namespace QuickRunner.Core.TestRunExtractors
         private void LoadAssembly()
         {
             AppDomain.CurrentDomain.AssemblyResolve += ExternalAssemblyResolver; // Temporarily enhance dependency resolution
-            Assembly = Assembly.LoadFrom(Path.Combine(_assemblyPath, _assemblyFilename));
+            Assembly = Assembly.LoadFrom(Path.Combine(Options.AssemblyPath, Options.AssemblyFileName));
             AppDomain.CurrentDomain.AssemblyResolve -= ExternalAssemblyResolver;
         }
 
@@ -61,7 +58,7 @@ namespace QuickRunner.Core.TestRunExtractors
             catch
             {
                 // Grab platform-specific assembly
-                return Assembly.LoadFrom(Path.Combine(_assemblyPath, args.Name + ".dll"));
+                return Assembly.LoadFrom(Path.Combine(Options.AssemblyPath, args.Name + ".dll"));
             }
         }
 

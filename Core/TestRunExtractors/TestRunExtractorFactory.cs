@@ -11,14 +11,9 @@ namespace QuickRunner.Core.TestRunExtractors
                 return new EnvironmentNamespacesExtractor(options);
             }
 
-            if (options.Namespaces != null && options.Namespaces.Count > 0)
+            if (options.Namespaces != null || options.Categories != null)
             {
-                return new GlobalNamespaceExtractor(options);
-            }
-
-            if (options.Categories != null && options.Categories.Count > 0)
-            {
-                return new CategoryExtractor(options);
+                return new FilteredSplitExtractor(options);
             }
 
             return new EvenSplitExtractor(options);

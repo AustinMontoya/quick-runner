@@ -31,6 +31,8 @@ There are both global and environment-level options that can be specified to tel
 - `AggregateResults` (optional, defaults to `false`): Indicates whether to create a single output file for results across all environments. The advantage of using this over a CI plugin is that an extra attribute is added to each <test-case> element, "qr-environment", which specifies which environment the particular case ran in.
 - `ResultsFilepath` (optional, defaults to "$currentDirectory\TestResults.xml"): Specifies an alternate location and filename to save aggregated results to. Is ignored if `AggregateResults` is set to false or omitted.
 - `ConfigFilepath` (optional): Specifies a path, relative to the AssemblyPath, where a file containing <app-settings> is stored.
+-  `Namespaces` (Array, optional): Allows runner to filter tests to one or more namespaces. Specifying a namespace containing other namespaces will run all tests in the top-level namespace. Can be combined with Categories.
+- `Categories` (Array, optional): Allows runner to filter tests to one or more categories.
 
 
 ### Environment-Specific
@@ -68,4 +70,4 @@ This will create two "environments" that run the tests in parallel. You'll see t
 
 ## Hints
 
-- Do not try and increase the number of environments to be equal to the number of tests, as this will cause a degradation in performance. This is because there is a couple seconds of overhead to start nunit-console.
+- Do not try and increase the number of environments to be equal to the number of tests, as this will cause a degradation in performance. This is because there are a couple seconds of overhead involved when starting nunit-console.

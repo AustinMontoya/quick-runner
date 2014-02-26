@@ -45,9 +45,9 @@
     <Compile Include="Results\ResultsAggregator.cs" />
     <Compile Include="Results\TestResult.cs" />
     <Compile Include="TestEnvironment.cs" />
-    <Compile Include="TestRunExtractors\CategoryExtractor.cs" />
     <Compile Include="TestRunExtractors\EvenSplitExtractor.cs" />
-    <Compile Include="TestRunExtractors\GlobalNamespaceExtractor.cs" />
+    <Compile Include="TestRunExtractors\FilterBy.cs" />
+    <Compile Include="TestRunExtractors\FilteredSplitExtractor.cs" />
     <Compile Include="TestRunExtractors\EnvironmentNamespacesExtractor.cs" />
     <Compile Include="TestRunExtractors\TestRunExtractor.cs" />
     <Compile Include="TestRunExtractors\TestRunExtractorFactory.cs" />

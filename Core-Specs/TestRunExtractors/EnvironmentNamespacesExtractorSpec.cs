@@ -7,29 +7,20 @@ using QuickRunner.Core.TestRunExtractors;
 namespace Core_Specs.TestRunExtractors
 {
     [TestFixture]
-    public class EnvironmentNamespacesExtractorSpec
+    public class EnvironmentNamespacesExtractorSpec : TestRunExtractorSpecBase
     {
-        private List<TestEnvironment> _environments;
-
         private IEnumerable<TestRun> _runs; 
 
         [SetUp]
         public void BeforeEach()
         {   
-            _environments = new List<TestEnvironment>
+            Options.Environments = new List<TestEnvironment>
             {
                 new TestEnvironment {Name = "foo", Namespaces = new List<string> { "Slowlenium.A" }},
                 new TestEnvironment {Name = "bar"},
             };
 
-            var options = new RunnerOptions
-            {
-                Environments = _environments,
-                AssemblyPath = "../../lib/test-assembly/",
-                AssemblyFileName = "Slowlenium.dll"
-            };
-
-            _runs = new EnvironmentNamespacesExtractor(options).Execute();
+            _runs = new EnvironmentNamespacesExtractor(Options).Execute();
         }
 
         [Test]

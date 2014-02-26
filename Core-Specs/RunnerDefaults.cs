@@ -19,11 +19,14 @@ namespace Core_Specs
             new TestEnvironment { Name = "foz" }
         };
 
-        public static RunnerOptions Options = new RunnerOptions
+        public static RunnerOptions GetOptions()
         {
-            AssemblyPath = AssemblyPath,
-            AssemblyFileName = AssemblyFileName,
-            Environments = Environments
-        };
+            return new RunnerOptions
+            {
+                AssemblyPath = AssemblyPath,
+                AssemblyFileName = AssemblyFileName,
+                Environments = Environments
+            };
+        }
     }
 }

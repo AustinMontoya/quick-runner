@@ -17,6 +17,7 @@ namespace QuickRunner.Core.Utils
 
             foreach (var file in Directory.GetFiles(sourcePath))
             {
+                File.SetAttributes(sourcePath, FileAttributes.Normal);
                 var dest = Path.Combine(destPath, Path.GetFileName(file));
                 File.Copy(file, dest, true);
             }

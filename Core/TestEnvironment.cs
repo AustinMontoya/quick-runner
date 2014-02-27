@@ -34,12 +34,6 @@ namespace QuickRunner.Core
         {
             Path = "environment-" + Name;
 
-            // Clear out old environment, we want a fresh folder every time
-            if (Directory.Exists(Path))
-            {
-                DirectoryUtils.Delete(Path);
-            }
-
             DirectoryUtils.CopyRecursive(new DirectoryInfo(assemblyPath).FullName, Path);
 
             if (string.IsNullOrEmpty(configFilepath)) return;
